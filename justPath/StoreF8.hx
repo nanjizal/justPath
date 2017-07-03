@@ -1,4 +1,4 @@
-package justDrawing.justPath;
+package justPath;
 
 class StoreF8{
     var l: Int = 0;
