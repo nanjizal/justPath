@@ -2,7 +2,7 @@
     "name"         : "justPath",
     "url"          : "https://github.com/nanjizal/justPath#justPath",
     "license"      : "MIT",
-    "tags"         : ["cross", "jsPath",'svg'],
+    "tags"         : ["cross", "jsPath","svg"],
     "description"  : "justPath takes an svg path and processes it into draw commands",
     "version"      : "0.0.1",
     "releasenote"  : "See https://github.com/nanjizal/justPath/blob/master/CHANGELOG.md",
