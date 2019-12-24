@@ -1,5 +1,5 @@
-package trilateral.justPath.transform;
-import trilateral.justPath.IPathContext;
+package justPath.transform;
+import justPath.IPathContext;
 class TransformationContext implements IPathContext {
     public var pathContext: IPathContext;
     public var m3: M3;
