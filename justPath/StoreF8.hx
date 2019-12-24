@@ -1,4 +1,4 @@
-package justPath;
+package trilateral.justPath;
 
 class StoreF8{
     var l: Int = 0;
