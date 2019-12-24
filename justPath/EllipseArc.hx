@@ -1,4 +1,4 @@
-package trilateral.justPath;
+package justPath;
 // http://www.petercollingridge.co.uk/blog/finding-angle-around-ellipse
 // http://commons.oreilly.com/wiki/index.php/SVG_Essentials/Paths
 // https://github.com/waldyrious/understand-svg-arcs
