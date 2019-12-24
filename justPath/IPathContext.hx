@@ -1,4 +1,4 @@
-package trilateral.justPath;
+package justPath;
 
 interface IPathContext{
     public function moveTo( x: Float, y: Float ): Void;
