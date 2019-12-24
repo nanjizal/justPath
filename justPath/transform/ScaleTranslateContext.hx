@@ -1,5 +1,5 @@
-package trilateral.justPath.transform;
-import trilateral.justPath.IPathContext;
+package justPath.transform;
+import justPath.IPathContext;
 class ScaleTranslateContext implements IPathContext {
     public var pathContext: IPathContext;
     public var dx: Float;
