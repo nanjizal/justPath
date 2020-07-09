@@ -1,0 +1,25 @@
+# lime dox flags
+-D display
+-D doc_gen
+-D lime-doc-gen
+
+-D doc-gen
+
+# can't currently generate nme dox's.
+-lib lime
+#-lib nme
+
+--macro include('justPath')
+--macro include('justPath.transform')
+-cp src
+-main justPath.upkeep.Doc
+--no-output
+
+--each
+
+--next
+-xml upkeep/cpp.xml
+-cpp foo
+
+
+# -D dump==pretty

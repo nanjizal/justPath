@@ -1,0 +1,5 @@
+-D haxe4
+-cmd haxe generateCpp.hxml
+-cmd haxelib run dox -i upkeep --title "justPath API documentation" -D themeColor 0xFFFF99 -D source-path https://github.com/nanjizal/justPath/tree/master/src/ --toplevel-package justPath 
+-cmd cd pages
+-cmd open index.html
