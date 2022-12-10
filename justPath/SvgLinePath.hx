@@ -485,6 +485,7 @@ class SvgLinePath{
     function quadTo( x1: Float, y1: Float, x2: Float, y2: Float ): Void {
         var tempArr = [];
         quadCurve( tempArr, lastX, lastY, x1, y1, x2, y2 );
+        trace( tempArr );
         plotCoord( tempArr, false );
         lastX = x2;
         lastY = y2;
@@ -494,6 +495,7 @@ class SvgLinePath{
     function curveTo( x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float ): Void {
         var tempArr = [];
         cubicCurve( tempArr, lastX, lastY, x1, y1, x2, y2, x3, y3 );
+        trace( tempArr );
         plotCoord( tempArr, false );
         lastX = x3;
         lastY = y3;
