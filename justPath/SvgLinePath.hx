@@ -482,19 +482,21 @@ class SvgLinePath{
     }
     public inline
     function quadTo( x1: Float, y1: Float, x2: Float, y2: Float ): Void {
-        tempArr = [];
+        var tempArr = [];
         quadCurve( tempArr, x, y, x1, y1, x2, y2 );
         plotCoord( tempArr, false );
         lastX = x2;
         lastY = y2;
+        tempArr = [];
     }
     public inline
     function curveTo( x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float ): Void {
-        tempArr = [];
+        var tempArr = [];
         cubicCurve( tempArr, x, y, x1, y1, x2, y2, x3, y3 );
         plotCoord( tempArr, false );
         lastX = x3;
         lastY = y3;
+        tempArr = [];
     }
     public inline
     function plotCoord( arr: Array<Float>, ?withMove: Bool = true ): Void {
