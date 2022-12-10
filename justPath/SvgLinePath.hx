@@ -2,6 +2,7 @@ package justPath;
 import justPath.StoreF8;
 import justPath.StoreF6;
 import justPath.EllipseArc;
+import justPath.CurveMath;
 import justPath.ILinePathContext;
 class SvgLinePath{
     var str = '';
