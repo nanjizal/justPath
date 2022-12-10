@@ -14,7 +14,7 @@ class SvgLinePath{
     var l = 0;
     var pathContext: ILinePathContext;
     var store:       StoreF6;
-    public function new( pathContext_: IPathContext ){
+    public function new( pathContext_: ILinePathContext ){
         pathContext = pathContext_;
     }
     function quickTriangle( x0: Float, y0: Float, off: Float ){ // only used for visual debug ie: Ellipse Arc.
