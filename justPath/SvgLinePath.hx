@@ -508,10 +508,6 @@ class SvgLinePath{
         } else {
             pathContext.lineTo( arr[ 0 ], arr[ 1 ] );
         }
-        var cx = (arr[0] + arr[l-2])/2;
-        var cy = (arr[1] + arr[l-1])/2;
-        var ox = x;
-        var oy = y;
         while( i < l ){
             pathContext.lineTo( arr[ i ], arr[ i + 1 ] );
             i += 2;
