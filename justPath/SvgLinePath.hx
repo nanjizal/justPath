@@ -41,15 +41,15 @@ class SvgLinePath{
                     if( store.length() == 2 ){ // usual case 
                         lastX = store.s0;
                         lastY = store.s1;
-                        pathContext.moveTo( lastX, lastY );
+                        moveTo( lastX, lastY );
                     } else if( store.length() > 2 ){ // when multiple moves ... these are actually lineTo, weird!
                             lastX = store.shift();
                             lastY = store.shift();
-                            pathContext.moveTo( lastX, lastY );
+                            moveTo( lastX, lastY );
                         while( store.length() > 1 ) { 
                             lastX = store.shift();
                             lastY = store.shift();
-                            pathContext.lineTo( lastX, lastY );
+                            lineTo( lastX, lastY );
                         }
                     } // when second parameter missing!
                 case 'm'.code:
@@ -73,12 +73,12 @@ class SvgLinePath{
                     if( store.length() == 2 ){
                         lastX = store.s0;
                         lastY = store.s1;
-                        pathContext.lineTo( lastX, lastY );
+                        lineTo( lastX, lastY );
                     } else if( store.length() > 2 ){
                         while( store.length() > 1 ){
                             lastX = store.shift();
                             lastY = store.shift();
-                            pathContext.lineTo( lastX, lastY );
+                            lineTo( lastX, lastY );
                         }
                     }
                 case 'l'.code:
@@ -98,11 +98,11 @@ class SvgLinePath{
                     extractArgs( false );
                     if( store.length() == 1 ){
                         lastX = store.s0;
-                        pathContext.lineTo( lastX, lastY );
+                        lineTo( lastX, lastY );
                     } else if( store.length() > 1 ){
                         while( store.length() > 0 ){
                             lastX = store.shift();
-                            pathContext.lineTo( lastX, lastY );
+                            lineTo( lastX, lastY );
                         }
                     }
                 case 'h'.code:
@@ -113,29 +113,29 @@ class SvgLinePath{
                     } else if( store.length() > 1 ){
                         while( store.length() > 0 ){
                             lastX = lastX + store.shift();
-                            pathContext.lineTo( lastX, lastY );
+                            lineTo( lastX, lastY );
                         }
                     }
                 case 'V'.code:
                     extractArgs( false );
                     if( store.length() == 1 ){
                         lastY = store.shift();
-                        pathContext.lineTo( lastX, lastY );
+                        lineTo( lastX, lastY );
                     } else if( store.length() > 1 ){
                         while( store.length() > 0 ){
                             lastY = store.shift();
-                            pathContext.lineTo( lastX, lastY );
+                            lineTo( lastX, lastY );
                         }
                     }
                 case 'v'.code:
                     extractArgs( false );
                     if( store.length() == 1 ){
                         lastY = lastY + store.s0;
-                        pathContext.lineTo( lastX, lastY );
+                        lineTo( lastX, lastY );
                     } else if( store.length() > 1 ){
                         while( store.length() > 0 ){
                             lastY = lastY + store.shift();
-                            pathContext.lineTo( lastX, lastY );
+                            lineTo( lastX, lastY );
                         }
                     }
                 case 'C'.code:
@@ -476,28 +476,44 @@ class SvgLinePath{
     inline function nextChar() {
         return StringTools.fastCodeAt( str, pos++ );
     }
+    public inline
+    function moveTo( x_: Float, y_: Float ): Void {
+        px = x_;
+        py = y_;
+        pathContext.moveTo( x_, y_ );
+    }
+    public inline
+    function lineTo( x_: Float, y_: Float ): Void {
+        pathContext.lineTo( x_,y_);
+        px = x_;
+        py = y_;
+    }
     // x1,y1 is a point on the curve rather than the control point, taken from my divtatic project.
     public inline
     function quadThru( x1: Float, y1: Float, x2: Float, y2: Float ): Void {
-        var newx = 2*x1 - 0.5*( lastX + x2 );
-        var newy = 2*y1 - 0.5*( lastY + y2 );
+        var newx = 2*x1 - 0.5*( px + x2 );
+        var newy = 2*y1 - 0.5*( py + y2 );
         return quadTo( newx, newy, x2, y2 );
     }
     public inline
     function quadTo( x1: Float, y1: Float, x2: Float, y2: Float ): Void {
         var tempArr = [];
-        quadCurve( tempArr, lastX, lastY, x1, y1, x2, y2 );
+        quadCurve( tempArr, px, py, x1, y1, x2, y2 );
         trace( tempArr );
         plotCoord( tempArr, false );
         tempArr = [];
+        px = x2;
+        py = y2;
     }
     public inline
     function curveTo( x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float ): Void {
         var tempArr = [];
-        cubicCurve( tempArr, lastX, lastY, x1, y1, x2, y2, x3, y3 );
+        cubicCurve( tempArr, px, py, x1, y1, x2, y2, x3, y3 );
         trace( tempArr );
         plotCoord( tempArr, false );
         tempArr = [];
+        px = x2;
+        py = y2;
     }
     public inline
     function plotCoord( arr: Array<Float>, ?withMove: Bool = true ): Void {
