@@ -13,6 +13,8 @@ class SvgLinePath{
     var controlY = 0.;
     var c = 0;
     var l = 0;
+    var px = 0.;
+    var py = 0.;
     var pathContext: ILinePathContext;
     var store:       StoreF6;
     public function new( pathContext_: ILinePathContext ){
@@ -487,8 +489,6 @@ class SvgLinePath{
         quadCurve( tempArr, lastX, lastY, x1, y1, x2, y2 );
         trace( tempArr );
         plotCoord( tempArr, false );
-        lastX = x2;
-        lastY = y2;
         tempArr = [];
     }
     public inline
@@ -497,8 +497,6 @@ class SvgLinePath{
         cubicCurve( tempArr, lastX, lastY, x1, y1, x2, y2, x3, y3 );
         trace( tempArr );
         plotCoord( tempArr, false );
-        lastX = x3;
-        lastY = y3;
         tempArr = [];
     }
     public inline
