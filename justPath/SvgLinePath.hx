@@ -512,8 +512,8 @@ class SvgLinePath{
         trace( tempArr );
         plotCoord( tempArr, false );
         tempArr = [];
-        px = x2;
-        py = y2;
+        px = x3;
+        py = y3;
     }
     public inline
     function plotCoord( arr: Array<Float>, ?withMove: Bool = true ): Void {
