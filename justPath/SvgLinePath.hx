@@ -500,7 +500,7 @@ class SvgLinePath{
         var tempArr = [];
         quadCurve( tempArr, px, py, x1, y1, x2, y2 );
         trace( tempArr );
-        plotCoord( tempArr, false );
+        plotSegmentCoord( tempArr, false );
         tempArr = [];
         px = x2;
         py = y2;
@@ -510,11 +510,25 @@ class SvgLinePath{
         var tempArr = [];
         cubicCurve( tempArr, px, py, x1, y1, x2, y2, x3, y3 );
         trace( tempArr );
-        plotCoord( tempArr, false );
+        plotSegmentCoord( tempArr, false );
         tempArr = [];
         px = x3;
         py = y3;
     }
+    public inline
+    function plotSegmentCoord( arr: Array<Float>, ?withMove: Bool = true ): Void {
+        var l = arr.length;
+        var i = 2;
+        if( withMove ){ // normally when just plotting points you will do it withMove but from a curve not.
+            pathContext.moveTo( arr[ 0 ], arr[ 1 ] );
+        } else {
+            pathContext.lineSegmentTo( arr[ 0 ], arr[ 1 ] );
+        }
+        while( i < l ){
+            pathContext.lineSegmentTo( arr[ i ], arr[ i + 1 ] );
+            i += 2;
+        }
+    }   
     public inline
     function plotCoord( arr: Array<Float>, ?withMove: Bool = true ): Void {
         var l = arr.length;
