@@ -10,4 +10,7 @@ class LinePathContextTrace implements ILinePathContext {
     public function lineTo( x: Float, y: Float ): Void{
         trace( 'lineTo( $x, $y );' );
     }
+    public function lineSegmentTo( x: Float, y: Float ): Void{
+        trace( 'lineSegmentTo( $x, $y );' );
+    }
 }
